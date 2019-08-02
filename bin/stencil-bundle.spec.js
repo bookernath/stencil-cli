@@ -1,6 +1,6 @@
 'use strict';
 
-const Code = require('code');
+const Code = require('@hapi/code');
 const Fs = require('fs');
 const Sinon = require('sinon');
 const Path = require('path');
@@ -22,7 +22,7 @@ describe('Stencil Bundle', () => {
     let Bundle;
 
     lab.beforeEach(done => {
-        sandbox = Sinon.sandbox.create();
+        sandbox = Sinon.createSandbox();
         const themeConfigStub = getThemeConfigStub();
         const rawConfig = {
             "name": "Cornerstone",

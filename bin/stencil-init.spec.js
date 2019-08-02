@@ -1,6 +1,6 @@
 'use strict';
 
-const Code = require('code');
+const Code = require('@hapi/code');
 const Sinon = require('sinon');
 const Lab = require('lab');
 const lab = exports.lab = Lab.script();
@@ -14,7 +14,7 @@ describe('stencil init', () => {
     let sandbox;
 
     lab.beforeEach(done => {
-        sandbox = Sinon.sandbox.create();
+        sandbox = Sinon.createSandbox();
         sandbox.stub(console, 'log');
         sandbox.stub(console, 'error');
         done();

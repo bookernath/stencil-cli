@@ -1,6 +1,6 @@
 const ChangelogGenerator = require('./changelog-generator');
 const CommandExecutor = require('./command-executor');
-const Code = require('code');
+const Code = require('@hapi/code');
 const Lab = require('lab');
 const lab = exports.lab = Lab.script();
 const describe = lab.describe;
@@ -77,7 +77,7 @@ describe('ChangelogGenerator', () => {
                 sameFile: true,
             }
             )).to.equal(true);
-            
+
             done();
         });
     });

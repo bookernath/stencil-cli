@@ -1,5 +1,5 @@
 const CommandExecutor = require('./command-executor');
-const Code = require('code');
+const Code = require('@hapi/code');
 const Lab = require('lab');
 const lab = exports.lab = Lab.script();
 const describe = lab.describe;
@@ -19,7 +19,7 @@ describe('CommandExecutor', () => {
         childProcess = require('child_process');
         spawnSpy = sinon.spy(childProcess, "spawn");
         commandExecutor = new CommandExecutor(childProcess);
-        
+
         commandExecutor.executeCommand('jest', ['xyz.js'], { config: 'config.js' }, () => {
             expect(spawnSpy.calledWith(
                 require('npm-which')(__dirname).sync('jest'),
@@ -53,11 +53,11 @@ describe('CommandExecutor', () => {
         };
 
         spawn = function() { return processMock };
-        
+
         doneCallBack = sinon.fake();
         commandExecutor = new CommandExecutor({ spawn });
         commandExecutor.executeCommand('jest', ['xyz.js'], { config: 'config.js' }, doneCallBack);
-        
+
         expect(doneCallBack.calledWith(undefined)).to.equal(false);
 
         done();

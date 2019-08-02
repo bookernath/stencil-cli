@@ -1,6 +1,6 @@
 'use strict';
 
-const Code = require('code');
+const Code = require('@hapi/code');
 const Lab = require('lab');
 const sinon = require('sinon');
 const Wreck = require('wreck');

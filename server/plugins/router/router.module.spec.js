@@ -1,4 +1,4 @@
-const Code = require('code');
+const Code = require('@hapi/code');
 const Hapi = require('hapi');
 const Lab = require('lab');
 const lab = exports.lab = Lab.script();
