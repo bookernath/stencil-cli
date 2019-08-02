@@ -1,5 +1,5 @@
 const Code = require('@hapi/code');
-const Hapi = require('hapi');
+const Hapi = require('@hapi/hapi');
 const Lab = require('lab');
 const lab = exports.lab = Lab.script();
 const describe = lab.describe;
@@ -8,7 +8,10 @@ const it = lab.it;
 const router = require('./router.module');
 
 describe('Router', () => {
-    var server = new Hapi.Server();
+    var server = new Hapi.Server({
+        host: 'localhost',
+        port: 3000,
+    });
     const RendererPluginMock = {
         register: function(server, options, next) {
             server.expose('implementation', (request, reply) => reply('RendererHandlerFired'));
@@ -34,10 +37,6 @@ describe('Router', () => {
         name: 'ThemeAssets',
         version: '0.0.1',
     };
-
-    server.connection({
-        port: 3000,
-    });
 
     lab.before(done => {
         server.register([
