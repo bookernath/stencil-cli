@@ -1,0 +1,75 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Theme Bundle Test
+
+on:
+  pull_request:
+    branches: [ master, main ]
+  push:
+    branches: [ master, main ]
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [10.x, 12.x]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Use Node.js ${{ matrix.node }}
+      uses: actions/setup-node@v2-beta
+      with:
+        node-version: ${{ matrix.node }}
+
+    - name: Install Dependencies  
+      run: npm i
+
+    - name: Run tests
+      run: npm test
+  build-windows:
+    runs-on: windows-latest
+
+    strategy:
+      matrix:
+        node: [10.x, 12.x]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Use Node.js ${{ matrix.node }}
+      uses: actions/setup-node@v2-beta
+      with:
+        node-version: ${{ matrix.node }}
+
+    - name: Install Dependencies  
+      run: npm i
+
+    - name: Run tests
+      run: npm test
+  build-osx:
+    runs-on: macos-latest
+
+    strategy:
+      matrix:
+        node: [10.x, 12.x]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Use Node.js ${{ matrix.node }}
+      uses: actions/setup-node@v2-beta
+      with:
+        node-version: ${{ matrix.node }}
+
+    - name: Install Dependencies  
+      run: npm i
+
+    - name: Run tests
+      run: npm test
