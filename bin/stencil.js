@@ -10,6 +10,7 @@ program
     )
     .command('start', 'Starts up BigCommerce store using theme files in the current directory.')
     .command('bundle', 'Bundles up the theme into a zip file which can be uploaded to BigCommerce.')
+    .command('bundle-worker', 'Bundles up the theme into a Cloudflare Worker for edge rendering.')
     .command('release', "Create a new release in the theme's github repository.")
     .command('push', 'Bundles up the theme into a zip file and uploads it to your store.')
     .command('pull', 'Pulls currently active theme config files and overwrites local copy')
